@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<script>
+
+    function computerPlay() {
+        let randInteger = Math.floor(Math.random() * 3);
+        if (randInteger == 0) {
+            return "rock";
+        }
+        else if (randInteger == 1) {
+            return "paper";
+        }
+        else {
+            return "scissors";
+        }
+    }
+
+    function playRound (playerSelection, computerSelection) {    
+        playerSelection = playerSelection.toLowerCase();
+        computerSelection = computerSelection.toLowerCase();
+
+        if (playerSelection === computerSelection) {
+            return "It is a tie!";
+        }
+        
+        if ((playerSelection === "rock"     && computerSelection === "paper") || 
+            (playerSelection === "paper"    && computerSelection === "scissors") || 
+            (playerSelection === "scissors" && computerSelection === "rock"))
+        {
+            return "Computer wins!" + " Player Selection: " + playerSelection + ";" + " Computer Selection: " + computerSelection;
+        }
+
+        else {
+            return "Player wins!" + " Player Selection: " + playerSelection + ";" + " Computer Selection: " + computerSelection;
+        }        
+    }
+
+    function game() {
+        for (round = 1; round <=5; round++) {
+            playerSelection = window.prompt("Specify your option");
+            let result = playRound(playerSelection, computerPlay());
+            console.log(result);
+        }
+    }
+</script>
