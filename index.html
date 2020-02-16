@@ -1,6 +1,87 @@
 <!DOCTYPE html>
 
+<html>
+    <body>
+        <div class="btnRow1">       
+            <button class="choice" id="rockBtn">Rock</button>
+            <button class="choice" id="paperBtn">Paper</button>
+        </div>
+        <div class="btnRow2">
+            <button class="choice" id="scissorsBtn">Scissors</button>
+        </div>       
+        <div>
+            <p>                                                
+            </p>
+        </div> 
+    </body>
+</html>
+
+<style>
+    .choice {
+        width: 250px;
+        height: 200px;
+        border-radius: 15px;
+        font-size: xx-large;
+        color:black;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
+
+    #rockBtn {
+        background-color: blueviolet;
+    }
+
+    #paperBtn {
+        background-color: cornflowerblue;
+        margin-left: 20px;
+    }
+
+    #scissorsBtn {
+        background-color: darkseagreen;
+    }
+
+    .btnRow1 {
+        margin-top:15%;
+        margin-left: 30%;
+        padding-bottom: 20px;
+    }
+
+    .btnRow2 {
+        margin-left: 40%;
+        padding-bottom: 20px;
+    }
+
+    p {
+        font-size: xx-large;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+    }
+</style>
+
 <script>
+
+    const buttons = document.querySelectorAll("button");
+    const rock = buttons[0];
+    const paper = buttons[1];
+    const scissors = buttons[2];
+
+    let playerSelection;
+    const output = document.querySelector("p");    
+
+    rock.onclick = function() {
+        playerSelection = "rock";
+        output.textContent = playRound(playerSelection, computerPlay());
+    }
+
+    paper.onclick = function() {
+        playerSelection = "paper";
+        output.textContent = playRound(playerSelection, computerPlay());
+
+    }
+
+    scissors.onclick = function() {
+        playerSelection = "scissors";
+        output.textContent = playRound(playerSelection, computerPlay());
+    }
 
     function computerPlay() {
         let randInteger = Math.floor(Math.random() * 3);
@@ -27,11 +108,11 @@
             (playerSelection === "paper"    && computerSelection === "scissors") || 
             (playerSelection === "scissors" && computerSelection === "rock"))
         {
-            return "Computer wins!" + " Player Selection: " + playerSelection + ";" + " Computer Selection: " + computerSelection;
+            return "COMPUTER WINS!" + " Player Selection: " + playerSelection + ";" + " Computer Selection: " + computerSelection;
         }
 
         else {
-            return "Player wins!" + " Player Selection: " + playerSelection + ";" + " Computer Selection: " + computerSelection;
+            return "YOU WIN!" + " Player Selection: " + playerSelection + ";" + " Computer Selection: " + computerSelection;
         }        
     }
 
